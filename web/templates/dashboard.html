@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HIPS Dashboard</title>
+</head>
+<body>
+    <h1>Panel de Control del HIPS</h1>
+    <p>Bienvenido, admin</p> <p>
+        <a href="{{ url_for('logout') }}">Salir</a>
+    </p>
+
+    <h2>Ejecutar Chequeos del Sistema</h2>
+    <form action="/dashboard" method="post">
+        <button type="submit" name="accion" value="cambios/etc/passwd">Verificar cambios en /etc/passwd y /etc/shadow</button><br>
+        <button type="submit" name="accion" value="check_users">Verificar usuarios conectados</button><br>
+        <button type="submit" name="accion" value="check_sniffers">Verificar sniffers (y otros procesos) y matarlos</button><br>
+        <button type="submit" name="accion" value="log_analyzer">Checkear ips</button><br>
+        <button type="submit" name="accion" value="ram">Checkear proceso que agarre mucho ram</button><br>
+        <button type="submit" name="accion" value="tmp">Checkear procesos en /tmp</button><br>
+        <button type="submit" name="accion" value="ddos">Checkear si hay ataques ddos</button><br>
+        <button type="submit" name="accion" value="cron">Checkear tareas cron sospechosas</button><br>
+        <button type="submit" name="accion" value="ipfalla">Checkear intentos fallidos de usuarios</button><br>
+        
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+           <form action="/dashboard" method="post">
+               <button type="submit" name="accion" value="email_an">Checkear cola de emails</button>
+           </form>
+           <form action="/config" method="get">
+               <button type="submit">Cambiar umbral</button>
+           </form>
+        </div>
+        
+        </form>
+
+    <hr> <h2>Resultado del módulo:</h2>
+    <pre>{{ salida }}</pre>
+
+</body>
+</html>
+
+
