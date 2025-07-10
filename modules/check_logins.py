@@ -6,7 +6,7 @@ import sys
 import os
 
 # Agrega el directorio padre al path para importar módulos.
-sys.path.append("/opt/hips")
+sys.path.append("/opt/hips/modules")
 from utils.log import log_alarma
 from utils.db import conectar_db  
 
@@ -17,9 +17,6 @@ MAX_INTENTOS_POR_IP = 5      # Límite de usuarios distintos intentando acceder 
 def obtener_logs_fallidos():
     """
     Obtiene los logs de intentos de autenticación SSH fallidos del día actual usando journalctl.
-
-    Returns:
-        list: Una lista de strings, cada uno representando una línea de log.
     """
     try:
         # Ejecuta 'journalctl' para filtrar logs de SSH fallidos desde hoy.
@@ -34,14 +31,7 @@ def obtener_logs_fallidos():
         return []
 
 def registrar_intento(usuario, ip, cantidad):
-    """
-    Registra los intentos de acceso sospechosos en la base de datos.
-
-    Args:
-        usuario (str): Nombre del usuario involucrado.
-        ip (str): Dirección IP de origen del intento.
-        cantidad (int): Número de intentos fallidos.
-    """
+    
     conn = conectar_db() # Establece conexión con la base de datos.
     if not conn:
         return # Si la conexión falla, termina la función.

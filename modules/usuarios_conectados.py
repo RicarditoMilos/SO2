@@ -208,7 +208,7 @@ def verificar_y_reportar_usuarios():
         reporte_salida.append("\n--- ALERTAS DE USUARIOS ---")
         reporte_salida.extend(usuarios_alerta)
     else:
-        reporte_salida.append("\nNo se detectaron usuarios no admitidos.")
+        reporte_salida.append("\nSalió todo bien.")
 
     reporte_salida.append("--- Fin de la Verificación ---")
     return "\n".join(reporte_salida)

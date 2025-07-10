@@ -4,7 +4,7 @@ import sys
 from datetime import datetime
 
 # Añade el directorio '/opt/hips' a la ruta de búsqueda para importar módulos.
-sys.path.append("/opt/hips")
+sys.path.append("/opt/hips/modules")
 from utils.log import log_alarma
 
 # Directorios estándar de configuración de cron.
